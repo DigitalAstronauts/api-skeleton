@@ -1,0 +1,23 @@
+version: '3'
+services:
+  api_skeleton:
+    image: krizius/php:8.0-apache
+    volumes:
+      - .:/var/www
+    networks:
+      - inbound
+      - persistence
+    deploy:
+      labels:
+        - "traefik.http.routers.api_skeleton.rule=Host(`api-skeleton.localhost`)"
+        - "traefik.http.routers.api_skeleton.entrypoints=web"
+        - "traefik.http.routers.api_skeleton.service=api_skeleton"
+        - "traefik.http.services.api_skeleton.loadbalancer.server.port=80"
+        - "traefik.docker.network=inbound"
+      restart_policy:
+        condition: on-failure
+networks:
+  inbound:
+    external: true
+  persistence:
+    external: true
