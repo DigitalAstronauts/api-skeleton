@@ -15,10 +15,10 @@
         "laminas/laminas-diactoros": "^2.8",
         "digitalastronauts/rocket": "dev-master",
         "jms/serializer": "^3.16",
-        "guzzlehttp/guzzle": "^7.4"
+        "guzzlehttp/guzzle": "^7.4",
+        "tracy/tracy": "^2.8"
     },
     "require-dev": {
-        "tracy/tracy": "^2.8",
         "phpunit/phpunit": "^9.5"
     }
 }

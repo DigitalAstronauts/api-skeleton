@@ -11,6 +11,7 @@ use League\Route\Router;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\Dotenv\Dotenv;
+use Tracy\Debugger;
 
 class Application
 {
@@ -18,6 +19,7 @@ class Application
 
     public function run(string $envPath = __DIR__ . '/../.env'): void
     {
+        Debugger::enable(Debugger::DEVELOPMENT);
         (new Dotenv())->load($envPath);
         $this->createContainer();
         $this->serve();
